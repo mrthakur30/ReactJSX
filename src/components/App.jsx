@@ -1,12 +1,25 @@
 import React from "react";
-import List from "./List.jsx";
-import Heading from "./Heading.jsx";
+
 
 function App(){
+    var time = new Date().toLocaleTimeString();
+    console.log(time);
+
+    var [state,setState] = React.useState(time);
+
+    function updateTime(){
+        var newTime = new Date().toLocaleTimeString();
+        return setState(newTime);
+    }
+
+    setInterval(updateTime,1000);
+
     return (
-    <div>
-        <Heading></Heading>
-        <List></List>
-    </div>)
+        <div>
+            <h1>{time}</h1>
+            <button onClick={updateTime}>Get Time</button>
+        </div>
+    );
 }
+
 export default App ;
